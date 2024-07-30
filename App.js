@@ -1,35 +1,26 @@
-import { Text, View, Image, TextInput } from 'react-native'
-import React from 'react'
 
-const App = () => {
-    const Inputan = ({ nama, color })=>{
-      return(
-        <TextInput
-        placeholder={`Masukkan ${nama}`}
-        style ={{
-          borderWidth: 1,
-          borderColor: 'black',
-          borderRadius: 10,
-          width: 300,
-          height: 50,
-          marginVertical: 10,
-          padding: 10,
-          backgroundColor: 'white',
-          color:color,
-        }}
-        />
-      )
-    }
-return (
-  <View style = {{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }}>
-    <Inputan nama= "Email" color = "black"/>
-    <Inputan nama= "Username" color = "black"/>
-    <Inputan nama= "Password" color = "black"/>
-    </View>
-  )
+// App.js
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './component/button/button';  // Correct path to Login component
+import SignUp from './component/button/SignUp'; // Correct path to SignUp component
+import ForgotPassword from './component/button/ForgotPassword'; // Correct path to ForgotPassword component
+import HomeScreen from './component/button/HomeScreen'; // Correct path to HomeScreen component
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
+
 export default App;
